@@ -21,14 +21,13 @@ if st.button("🧠 一键整理"):
         }
         response = requests.post("https://api.deepseek.com/v1/chat/completions", headers=headers, json=payload)
         result = response.json()
-        st.subheader("📄 整理结果")
-
-        # 调试：显示完整 JSON 响应内容
+       
 st.json(result)
 
-     # 如果返回中有 choices 字段就显示整理内容，否则显示整个结果
-if "choices" in result:
+if "choices" in result and result["choices"]:
+    st.subheader("📄 整理结果")
     st.write(result["choices"][0]["message"]["content"])
 else:
-    st.write("⚠️ 接口返回格式异常，原始数据如下：")
-    st.write(result)
+    st.write("⚠️ API 返回结构异常，原始数据如下：")
+    st.json(result)
+
