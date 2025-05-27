@@ -12,7 +12,8 @@ if st.button("🧠 一键整理"):
     with st.spinner("正在分析中..."):
         prompt = f"以下是微信群消息笔记，请提取重要事项、提醒、和关键信息，生成清晰摘要：\n\n{user_input}"
         headers = {
-            "Authorization": "Bearer YOUR_API_KEY",  # TODO: 替换成你自己的
+            "Authorization": "Bearer sk-278e27f90ab845619183e24ec00d9ce4"
+,  # TODO: 替换成你自己的
             "Content-Type": "application/json"
         }
         payload = {
