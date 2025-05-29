@@ -26,7 +26,22 @@ st.json(result)
 
 if "choices" in result and result["choices"]:
     st.subheader("📄 整理结果")
-    st.write(result["choices"][0]["message"]["content"])
+    import datetime
+
+today_str = datetime.date.today().isoformat()
+
+summary = result["choices"][0]["message"]["content"]
+
+st.subheader("📄 整理结果")
+st.markdown(summary)
+
+st.download_button(
+    label="📥 下载整理结果",
+    data=summary,
+    file_name=f"wechat_summary_{today_str}.md",
+    mime="text/markdown"
+)
+
 else:
     st.write("⚠️ API 返回结构异常，原始数据如下：")
     st.json(result)
